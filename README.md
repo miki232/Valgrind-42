@@ -1,7 +1,8 @@
 # Valgrind 42
 
 ## Install
-Clona o Scarica lo zip di questa repo. Una volta estratto, esegui il file "va-install.sh"
+Clona o Scarica lo zip di questa repo. Una volta estratto, **esegui ***soltanto*** il file "va-install.sh"**
+
 ```
 sh va-install.sh
 ```
