@@ -6,11 +6,11 @@
 #    By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 18:49:01 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/06 16:36:50 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/30 16:46:59 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#!/bin/bash
+#!/usr/bin/env bash
 
 dir=$(dirname -- "$0")
 current_dir=$(pwd)
@@ -33,10 +33,16 @@ LightGray='\033[0;37m'
 White='\033[1;37m'
 End='\033[0m'
 
-echo "${Purple}Installing Brew and Valgrind"
-echo "${LightBlue}First Installing Brew${End}"
+echo "${Purple}Installer script for Brew & Valgrind *42\n${End}"
+echo "${Blue}"
+base64 -D <<<"H4sIADd6h2MAA3NwIBVwkaxjwLRowAAKVxkuroauBVU9TABZBlWLBoYGsBiqJLIWLOqRgD5cmgtNPQ4NyNJcRFiAZhwXSRZgaEEHWHWAvU+CFliIEatFB0JjRCXhwMCaxuijhQCgkxYAWdYPdfwDAAA=" | gunzip
+echo "${Purple}Checking if Brew is already installed${End}"
 
-curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+if ! command -v brew &> /dev/null
+then
+    echo "${LightBlue}Installing Brew${End}"
+    curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+fi
 
 if test "$?" -ne 0
 then
@@ -45,7 +51,7 @@ else
     echo "${Green}Brew Installed"
 fi
 
-echo "${Purple}Now Installing Valgrind${End}"
+echo "${Purple}Installing Valgrind${End}"
 
 nodir="."
 
@@ -58,13 +64,18 @@ fi
 
 if ! command -v brew &> /dev/null
 then
-    echo "${Purple}Opening a new Terminal for install valgrind${End}"
-    sleep 1
-    osascript -e "tell application \"Terminal\" to do script \"${va_path}\""
+  echo "${Purple}Opening a new Terminal for install valgrind${End}"
+      osascript &>/dev/null <<EOF
+        tell application "iTerm2"
+         		create window with default profile 
+         		tell current session of current window
+         			delay 1
+         			write text "$va_path"
+         		end tell
+        end tell
+EOF
     exit
 fi
-
-echo "${Purple}\nWait${End}"
 
 brew tap LouisBrunner/valgrind
 
@@ -80,7 +91,7 @@ then
     if test "$?" -ne 0
     then
         echo "${Red}ERROR INSTALLING VALGRIND"
-        echo "${Red}Veditela te, SUCA"  
+        echo "${Red}Check if are no space left on device \nCheck the log output\n${End}"  
     else
         echo "${Green}Valgrind Installed" 
     fi
