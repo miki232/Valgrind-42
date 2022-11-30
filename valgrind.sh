@@ -6,7 +6,7 @@
 #    By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/06 15:04:21 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/06 16:22:10 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/30 17:08:38 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ LightCyan='\033[1;36m'
 LightGray='\033[0;37m'
 White='\033[1;37m'
 End='\033[0m'
+
+trap "exit" INT
 
 echo "${Purple}Now Installing Valgrind${End}"
 

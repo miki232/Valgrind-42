@@ -6,7 +6,7 @@
 #    By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 18:49:01 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/30 16:46:59 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/30 17:11:18 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,11 @@ LightGray='\033[0;37m'
 White='\033[1;37m'
 End='\033[0m'
 
+trap "exit" INT
+
 echo "${Purple}Installer script for Brew & Valgrind *42\n${End}"
-# echo "${Blue}"
-# base64 -D <<<"H4sIADd6h2MAA3NwIBVwkaxjwLRowAAKVxkuroauBVU9TABZBlWLBoYGsBiqJLIWLOqRgD5cmgtNPQ4NyNJcRFiAZhwXSRZgaEEHWHWAvU+CFliIEatFB0JjRCXhwMCaxuijhQCgkxYAWdYPdfwDAAA=" | gunzip
+echo "${Blue}"
+base64 -D <<<"H4sIALZ+h2MAA12MwQ0AIAgD/0xBwrMbdP/BJBUMckZpuUR3QfIFYVXBL9SQBaHbvJwWgbG4tbAsfZbqnz3dGMtGxH2FHRfoG6bCAAAA" | gunzip
 echo "${Purple}Checking if Brew is already installed${End}"
 
 if ! command -v brew &> /dev/null
