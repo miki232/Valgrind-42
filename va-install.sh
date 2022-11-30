@@ -34,8 +34,8 @@ White='\033[1;37m'
 End='\033[0m'
 
 echo "${Purple}Installer script for Brew & Valgrind *42\n${End}"
-echo "${Blue}"
-base64 -D <<<"H4sIADd6h2MAA3NwIBVwkaxjwLRowAAKVxkuroauBVU9TABZBlWLBoYGsBiqJLIWLOqRgD5cmgtNPQ4NyNJcRFiAZhwXSRZgaEEHWHWAvU+CFliIEatFB0JjRCXhwMCaxuijhQCgkxYAWdYPdfwDAAA=" | gunzip
+# echo "${Blue}"
+# base64 -D <<<"H4sIADd6h2MAA3NwIBVwkaxjwLRowAAKVxkuroauBVU9TABZBlWLBoYGsBiqJLIWLOqRgD5cmgtNPQ4NyNJcRFiAZhwXSRZgaEEHWHWAvU+CFliIEatFB0JjRCXhwMCaxuijhQCgkxYAWdYPdfwDAAA=" | gunzip
 echo "${Purple}Checking if Brew is already installed${End}"
 
 if ! command -v brew &> /dev/null
